@@ -1,31 +1,17 @@
-<div class="content-wrapper">
-    <section class="content-header">
-        <h1>
-            Dashboard
-            <small>Control panel</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-        </ol>
-    </section>
 
-    <!-- Main content -->
-    <section class="content">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-            Hello From Home Component
-            <p-accordion>
-                <p-accordionTab header="Header 1">
-                    Content 1
-                </p-accordionTab>
-                <p-accordionTab header="Header 2">
-                    Content 2
-                </p-accordionTab>
-                <p-accordionTab header="Header 3">
-                    Content 3
-                </p-accordionTab>
-            </p-accordion>
-        </div>
-    </section>
+<div style="padding: 15px">
+    <textarea rows="20" style="width: 100%" [(ngModel)]="query" [ngModelOptions]="{standalone: true}" autofocus></textarea>
+    <input type="button" class="btn btn-primary" value="Execute" (click)="execute()">
+</div>
+<div style="padding: 15px; max-height: 40%; width: 100%">
+    <p-tabView>
+        <p-tabPanel header="Results" [selected]="ctab == 0" [style]="{'width': '100%'}">
+            <p-dataTable [value]="rows" scrollable="true" [tableStyle]="{'width': '100%'}">
+                <p-column *ngFor="let col of colds" [field]="col.field" [header]="col.header" [sortable]="true" [style]="{'width':'250px'}"></p-column>
+            </p-dataTable>
+        </p-tabPanel>
+        <p-tabPanel header="Errors" [selected]="ctab == 1">
+            <p>{{errors}}</p>
+        </p-tabPanel>
+    </p-tabView>
 </div>

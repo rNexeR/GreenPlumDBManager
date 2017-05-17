@@ -1,0 +1,71 @@
+<div class="nav-bar">
+	<div style="height: 90%; max-height: 80%">
+		<p-tree selectionMode="single" [(selection)]="selected" [value]="connections" (onNodeSelect)="NodeSelected($event)" (onNodeExpand)="loadNode($event)" [style]="{'height': '100%'}" ></p-tree>
+		<!--<p-contextMenu #cm [model]="items"></p-contextMenu>-->
+	</div>
+	<h4 *ngIf="selected != undefined" class="information-box">{{selected == undefined ? "" : selected.label}} <small style="color: #f8f8f8">{{selected == undefined ? "" : selected.data.type}}</small></h4>
+	<h5 *ngIf="currentConnection != 'No connection selected'" class="success-box">{{currentConnection}}</h5>
+	<h5 *ngIf="errors != ''" class="error-box">{{errors}}</h5>
+	<!--<input type="number" style="z-index: 999" [(ngModel)]="currentView" [ngModelOptions]="{standalone: true}">-->
+</div>
+<!--<p-contextMenu #cm [model]="items"></p-contextMenu>-->
+
+<div class="h-nav-bar">
+	<p-menubar [model]="items"></p-menubar>
+</div>
+
+<home *ngIf="currentView == 0 && currentConnectionId >= 0" [connectionId]="currentConnectionId" [query]="output">Loading Home...</home>
+
+<table-viewer *ngIf="currentView == 1 && currentConnectionId >= 0" [connectionId]="currentConnectionId" [tableName]="currentObject">Loading Table Viewer...</table-viewer>
+
+<div *ngIf="currentView == 2 && currentConnectionId >= 0" style="height: 100%; background-color: white" class="content-body">
+	<textarea rows="42" style="width: 100%" [(ngModel)]="output" [ngModelOptions]="{standalone: true}" autofocus readonly></textarea>
+</div>
+
+<p-dialog header={{title}} [(visible)]="displayDialog">
+	<form (ngSubmit)="createConnection()">
+		<div class="form-group">
+			<label class="col-sm-3">ConName</label>
+			<div class="col-sm-9">
+				<input type="text" class="ui-input" [(ngModel)]="connection.conname" [ngModelOptions]="{standalone: true}" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3">Username</label>
+			<div class="col-sm-9">
+				<input type="text" class="ui-input" [(ngModel)]="connection.username" [ngModelOptions]="{standalone: true}" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3">Password</label>
+			<div class="col-sm-9">
+				<input type="password" class="ui-input" [(ngModel)]="connection.password" [ngModelOptions]="{standalone: true}" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3">Host</label>
+			<div class="col-sm-9">
+				<input type="text" class="ui-input" [(ngModel)]="connection.host" [ngModelOptions]="{standalone: true}" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3">Port</label>
+			<div class="col-sm-9">
+				<input type="text" class="ui-input" [(ngModel)]="connection.port" [ngModelOptions]="{standalone: true}" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3">Database</label>
+			<div class="col-sm-9">
+				<input type="text" class="ui-input" [(ngModel)]="connection.db" [ngModelOptions]="{standalone: true}" required>
+			</div>
+		</div>
+		<!-- <br> -->
+		<p-footer>
+			<br><br>
+			<div style="float: right">
+				<input type="submit" class="btn btn-primary" value="Enviar">
+			</div>
+		</p-footer>
+	</form>
+</p-dialog>

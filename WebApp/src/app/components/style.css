@@ -1,0 +1,78 @@
+.nav-bar{
+    width: 252px;
+    height: 100%;
+    min-height: 100%;
+    position: fixed;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #f8f8f8;
+}
+
+.information-box{
+    background-color: #3498db;
+    color: white;
+    padding: 5px;
+    margin: 0px;
+}
+
+.error-box{
+    /*opacity: 0.8;*/
+    background-color: #e74c3c;
+    padding: 5px;
+    margin: 0px;
+    color: white;
+    max-width: 100%;
+}
+
+.success-box{
+    /*opacity: 0.8;*/
+    background-color: #2ecc71;
+    padding: 5px;
+    margin: 0px;
+    color: white;
+    max-width: 100%;
+}
+
+.h-nav-bar{
+    margin-left: 252px;
+}
+
+home{
+    display: block;
+    margin-left: 252px;
+}
+
+.content-body{
+    display: block;
+    margin-left: 252px;
+}
+
+.ui-treenode-active{
+    color: blue;
+}
+
+input:required:invalid, input:focus:invalid {
+  border-left: 5px solid #a94442;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+
+.validation-invalid{
+    color: #843534;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.ui-input{
+    border-radius: 5px;
+    padding-left: 5px;
+}

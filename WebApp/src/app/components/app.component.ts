@@ -15,10 +15,10 @@ import {
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
+    './style.css'
   ],
   template: `
               <nav-bar>Loading NavBar...</nav-bar>
-              <router-outlet></router-outlet>
             `
 })
 export class AppComponent implements OnInit {
